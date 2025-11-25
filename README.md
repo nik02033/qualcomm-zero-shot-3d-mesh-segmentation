@@ -15,7 +15,8 @@ Main ideas:
 - `run_pipeline.py` – **main entrypoint**, orchestrates the full pipeline
 - `render_qualcomm_pytorch3d.py` – multiview PyTorch3D renderer
 - `main_sam.py` – FastSAM mask extraction from renders
-- `gdino_infer.py` – GroundingDINO v1 / 1.5 inference over renders
+- `grounded_sam2_gd15_batch.py` – GroundingDINO 1.5 inference over renders
+- `gdino_infer.py` – GroundingDINO v1 inference over renders
 - `mask_voting.py` – match FastSAM masks to boxes (voting heuristics)
 - `main_fuse_classcolor_pytorch3d.py` – fuse 2D labels back to mesh
 - `collect_ram_all_classes.py` – RAM++-based class discovery (writes `custom_classes.txt`)
@@ -33,16 +34,16 @@ External repos expected next to this project:
 
 ```bash
 python conversion.py \
-  --ply        evaluation/sum_parts/mesh/train/Tile_+1989_+2688_L2.ply \
-  --texture    evaluation/sum_parts/mesh/train/Tile_+1989_+2688_0.jpg \
-  --output_dir Tile_+1989_+2688_L2
+  --ply       mesh.ply \
+  --texture    texture.jpg \
+  --output_dir output
 ```
 
 ### 2. Main Pipeline
 
 ```bash
 python run_pipeline.py \
-  --input_mesh converted/Tile_+1990_+2691_L2.obj \
+  --input_mesh mesh.obj \
   --backend gdino1 \            # or gdino15
   --config pipeline_config.json \
   [--sumparts] \
@@ -103,4 +104,4 @@ For a given tile `Tile_...` the pipeline writes:
 - `Tile_.../dino_dets/dets_view_*.npy` and annotated JPEGs
 - `Tile_.../dino_dets/masks_labeled/masks_view_*.npy` (per-view labeled masks)
 - `Tile_.../face_class_strings.npy` (per-face class labels)
-- `Tile_.../segmented_Tile_..._L2.obj` (segmented mesh with class colors)
+- `Tile_.../segmented.obj` (segmented mesh with class colors)
