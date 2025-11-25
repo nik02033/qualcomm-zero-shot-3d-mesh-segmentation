@@ -1,0 +1,15 @@
+trees
+water
+car 
+boat 
+roof
+building 
+chimney  
+window 
+door 
+grass
+road 
+road marking 
+bridge
+dormer
+balcony

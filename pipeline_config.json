@@ -1,0 +1,26 @@
+{
+  "image_size": 1024,
+  "elev_deg": 38,
+  "zoom": 0.5,
+  "num_coarse_views": 9,
+  "num_fine_views": 3,
+  "fine_zoom": 0.85,
+  "backoff": 1.5,
+  "z_down_frac": 0.10,
+    
+  "grounding_model": "GroundingDino-1.5-Pro",
+  "box_threshold": 0.2,
+  "iou_threshold": 0.8,
+  
+  "box_thr": 0.3,
+  "text_thr": 0.35,
+  "min_score": 0.2,
+
+  "coverage_req": 0.85,
+  "area_low": 0.85,
+  "area_high": 2.0,
+  "hug_single_min": 0.30,
+  "hug_single_max": 1.00,
+  "inside_tol_frac": 0.05
+  
+}
