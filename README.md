@@ -105,3 +105,16 @@ For a given tile `Tile_...` the pipeline writes:
 - `Tile_.../dino_dets/masks_labeled/masks_view_*.npy` (per-view labeled masks)
 - `Tile_.../face_class_strings.npy` (per-face class labels)
 - `Tile_.../segmented.obj` (segmented mesh with class colors)
+
+## Evaluation
+Run the evaluation on predicted mesh labels:
+``` bash
+cd evaluation
+
+python evaluate.py \
+  --gt_ply path/to/ground_truth.ply \
+  --pred_npy path/to/face_class_strings.npy \
+  --label_map label_mapping.json \
+  --masks_dir path/to/masks \
+  --output_json results/sample_results.json
+```
